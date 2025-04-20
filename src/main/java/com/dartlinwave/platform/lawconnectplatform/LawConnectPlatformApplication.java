@@ -2,12 +2,14 @@ package com.dartlinwave.platform.lawconnectplatform;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+@EnableJpaAuditing
 @SpringBootApplication
-public class LawconnectPlatformApplication {
+public class LawConnectPlatformApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LawconnectPlatformApplication.class, args);
+		SpringApplication.run(LawConnectPlatformApplication.class, args);
 	}
 
 }
