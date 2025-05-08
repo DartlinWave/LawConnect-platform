@@ -1,9 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.matchmaking.application.internal.commandservices;
 
 import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.aggregates.Match;
-import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.commands.CreatePreMatchCommand;
-import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.commands.DeclineCaseByLawyerCommand;
-import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.commands.DeclineLawyerByClientCommand;
+import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.commands.*;
 import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.services.MatchCommandService;
 import com.dartlinwave.platform.lawconnectplatform.matchmaking.infrastructure.persistence.jpa.repositories.MatchRepository;
 import org.springframework.stereotype.Service;
@@ -37,12 +35,22 @@ public class MatchCommandServiceImpl implements MatchCommandService {
     }
 
     @Override
-    public void handle(DeclineCaseByLawyerCommand command) {
+    public void handle(AcceptCaseByLawyerCommand command) {
+        // TODO: Implement logic for lawyer to accept a case (invitation).
+    }
 
+    @Override
+    public void handle(AcceptLawyerByClientCommand command) {
+        // TODO: Implement logic for client to accept a lawyer.
+    }
+
+    @Override
+    public void handle(DeclineCaseByLawyerCommand command) {
+        // TODO: Implement logic for lawyer to decline a case (invitation).
     }
 
     @Override
     public void handle(DeclineLawyerByClientCommand command) {
-
+        // TODO: Implement logic for client to decline a lawyer.
     }
 }
