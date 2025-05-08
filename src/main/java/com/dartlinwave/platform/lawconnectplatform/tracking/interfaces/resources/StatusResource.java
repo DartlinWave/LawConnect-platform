@@ -1,4 +1,6 @@
 package com.dartlinwave.platform.lawconnectplatform.tracking.interfaces.resources;
 
-public record StatusResource() {
+import java.util.Date;
+
+public record StatusResource(long id, long legalCaseId, Date createdAt, Date updatedAt) {
 }
