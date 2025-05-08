@@ -25,8 +25,6 @@ public class Match extends AuditableAbstractAggregateRoot<Match> {
     }
 
     public Match() {
-        this.caseId = null;
-        this.lawyerId = null;
         this.matchStatus = MatchStatus.PENDING;
     }
 

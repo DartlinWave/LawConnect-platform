@@ -25,7 +25,7 @@ public class MatchCommandServiceImpl implements MatchCommandService {
         try {
             matchRepository.findMatchByCaseIdAndLawyerId(command.caseId(), command.lawyerId())
                     .ifPresent(existingMatch -> {
-                        throw new IllegalArgumentException("Match already exists for caseId");
+                        throw new IllegalArgumentException("Match already exists for matchId");
                     });
         } catch (Exception e) {
             throw new IllegalArgumentException("Error creating match: " + e.getMessage());
