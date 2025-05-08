@@ -4,5 +4,5 @@ import com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.entitie
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StatusTypeRepository extends JpaRepository<StatusType, Integer> {
-
+    boolean existsStatusTypesByType(StatusType type);
 }

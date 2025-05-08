@@ -1,4 +1,4 @@
 package com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.queries;
 
-public record GetStatusByCaseIdQuery () {
+public record GetStatusByCaseIdQuery (Long legalCaseId){
 }
