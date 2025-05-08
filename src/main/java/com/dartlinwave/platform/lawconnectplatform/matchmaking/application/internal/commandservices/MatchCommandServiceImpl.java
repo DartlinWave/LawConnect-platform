@@ -36,21 +36,49 @@ public class MatchCommandServiceImpl implements MatchCommandService {
 
     @Override
     public void handle(AcceptCaseByLawyerCommand command) {
-        // TODO: Implement logic for lawyer to accept a case (invitation).
+
+        var match = matchRepository.findById(command.matchId())
+                .orElseThrow(() -> new IllegalArgumentException("Match not found"));
+
+        match.accept();
+        matchRepository.save(match);
+
+        // TODO: Include external service to assign lawyer to case when the lawyer accepts the invitation.
     }
 
     @Override
     public void handle(AcceptLawyerByClientCommand command) {
-        // TODO: Implement logic for client to accept a lawyer.
+
+        var match = matchRepository.findById(command.matchId())
+                .orElseThrow(() -> new IllegalArgumentException("Match not found"));
+
+        match.accept();
+        matchRepository.save(match);
+
+        // TODO: Include external service to assign lawyer to case when the client accepts the application.
     }
 
     @Override
     public void handle(DeclineCaseByLawyerCommand command) {
-        // TODO: Implement logic for lawyer to decline a case (invitation).
+
+        var match = matchRepository.findById(command.matchId())
+                .orElseThrow(() -> new IllegalArgumentException("Match not found"));
+
+        match.decline();
+        matchRepository.save(match);
+
+        // TODO: Include external service to decline the case when the lawyer declines the invitation.
     }
 
     @Override
     public void handle(DeclineLawyerByClientCommand command) {
-        // TODO: Implement logic for client to decline a lawyer.
+
+        var match = matchRepository.findById(command.matchId())
+                .orElseThrow(() -> new IllegalArgumentException("Match not found"));
+
+        match.decline();
+        matchRepository.save(match);
+
+        // TODO: Include external service to decline the case when the client declines the application.
     }
 }
