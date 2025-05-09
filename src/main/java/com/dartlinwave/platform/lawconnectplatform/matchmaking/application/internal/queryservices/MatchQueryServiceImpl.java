@@ -1,4 +1,4 @@
-package com.dartlinwave.platform.lawconnectplatform.matchmaking.application.internal.commandservices;
+package com.dartlinwave.platform.lawconnectplatform.matchmaking.application.internal.queryservices;
 
 import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.aggregates.Match;
 import com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.queries.*;
