@@ -1,6 +1,6 @@
 package com.dartlinwave.platform.lawconnectplatform.matchmaking.interfaces.rest.resources;
 
-public record CreateMatchResource (
+public record CreatePreMatchResource(
         Long caseId,
         Long lawyerId,
         String matchStatus
