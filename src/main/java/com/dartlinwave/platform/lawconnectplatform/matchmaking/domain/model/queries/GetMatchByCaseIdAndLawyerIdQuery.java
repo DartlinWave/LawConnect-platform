@@ -1,4 +1,4 @@
 package com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.queries;
 
-public record GetMatchByLawyerIdAndCaseIdQuery(Long caseId, Long lawyerId) {
+public record GetMatchByCaseIdAndLawyerIdQuery(Long caseId, Long lawyerId) {
 }
