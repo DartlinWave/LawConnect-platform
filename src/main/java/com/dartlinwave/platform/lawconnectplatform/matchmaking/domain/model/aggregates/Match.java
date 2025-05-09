@@ -46,5 +46,4 @@ public class Match extends AuditableAbstractAggregateRoot<Match> {
         this.matchStatus = MatchStatus.DECLINE;
    }
 
-
 }
