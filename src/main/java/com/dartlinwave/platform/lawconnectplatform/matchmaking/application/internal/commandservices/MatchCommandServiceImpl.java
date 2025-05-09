@@ -23,7 +23,7 @@ public class MatchCommandServiceImpl implements MatchCommandService {
         var match = new Match(command);
 
         try {
-            matchRepository.findMatchByCaseIdAndLawyerId(command.caseId(), command.lawyerId())
+            matchRepository.findByCaseIdAndLawyerId(command.caseId(), command.lawyerId())
                     .ifPresent(existingMatch -> {
                         throw new IllegalArgumentException("Match already exists for matchId");
                     });
