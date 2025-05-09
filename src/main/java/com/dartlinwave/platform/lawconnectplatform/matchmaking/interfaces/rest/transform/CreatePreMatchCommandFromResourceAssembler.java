@@ -7,8 +7,7 @@ public class CreatePreMatchCommandFromResourceAssembler {
     public static CreatePreMatchCommand toCommandFromResource(CreatePreMatchResource resource) {
         return new CreatePreMatchCommand(
                 resource.caseId(),
-                resource.lawyerId(),
-                resource.matchStatus()
+                resource.lawyerId()
         );
     }
 }

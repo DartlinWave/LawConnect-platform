@@ -2,6 +2,5 @@ package com.dartlinwave.platform.lawconnectplatform.matchmaking.domain.model.com
 
 public record CreatePreMatchCommand(
         Long caseId,
-        Long lawyerId,
-        String matchStatus
+        Long lawyerId
 ) {}
