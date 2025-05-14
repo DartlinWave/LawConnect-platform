@@ -1,10 +1,9 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.entities;
 
-import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects.Roles;
-import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
+import java.util.Set;
+import jakarta.persistence.*;
+import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects.Roles;
 
 /**
  * Entity representing a user role in the LawConnect platform.
@@ -76,9 +75,9 @@ public class Role {
      * @param roles the list of roles to validate
      * @return the original list if not empty, otherwise a list with the default role
      */
-    public static List<Role> validateRoleSet(List<Role> roles) {
+    public static Set<Role> validateRoleSet(Set<Role> roles) {
         if (roles == null || roles.isEmpty())
-            return List.of(getDefaultRole());
+            return Set.of(getDefaultRole());
 
         return roles;
     }
