@@ -9,7 +9,16 @@ package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobject
  * </ul>
  */
 public enum Roles {
+    /**
+     * Administrator user with full access to the system.
+     */
     ROLE_ADMIN,
+    /**
+     * Lawyer user with permissions to manage cases.
+     */
     ROLE_LAWYER,
+    /**
+     * Customer user who can create and track cases.
+     */
     ROLE_CUSTOMER,
 }
