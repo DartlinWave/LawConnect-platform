@@ -18,7 +18,7 @@ public enum Roles {
      */
     ROLE_LAWYER,
     /**
-     * Customer user who can create and track cases.
+     * Client user who can create and track cases.
      */
-    ROLE_CUSTOMER,
+    ROLE_CLIENT,
 }
