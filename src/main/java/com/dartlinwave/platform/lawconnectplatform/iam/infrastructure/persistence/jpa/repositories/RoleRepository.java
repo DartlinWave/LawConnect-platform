@@ -1,5 +1,6 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.infrastructure.persistence.jpa.repositories;
 
+import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects.Roles;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.entities.Role;
@@ -22,7 +23,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
      * @param name the name of the role to find
      * @return an {@link Optional} containing the found role, or empty if not found
      */
-    Optional<Role> findByName(String name);
+    Optional<Role> findByName(Roles name);
 
     /**
      * Checks if a role with the given name exists.
@@ -30,5 +31,5 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
      * @param name the name of the role to check
      * @return {@code true} if a role with the given name exists, {@code false} otherwise
      */
-    boolean existsByName(String name);
+    boolean existsByName(Roles name);
 }
