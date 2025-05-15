@@ -33,8 +33,8 @@ public record SignUpClientCommand(String name, String lastname,
         if (dni == null || dni.isBlank() || dni.length() != 8 || !dni.matches("\\d+")) {
             throw new IllegalArgumentException("DNI cannot be null, blank, or different from 8 characters");
         }
-        if (password == null || password.isBlank() || password.length() < 25) {
-            throw new IllegalArgumentException("Password cannot be null, blank, or less than 25 characters");
+        if (password == null || password.isBlank()) {
+            throw new IllegalArgumentException("Password cannot be null or blank");
         }
         if (phone == null || phone.isBlank() || phone.length() != 9 || !phone.matches("\\d+")) {
             throw new IllegalArgumentException("Phone cannot be null, blank, or different from 9 characters");
