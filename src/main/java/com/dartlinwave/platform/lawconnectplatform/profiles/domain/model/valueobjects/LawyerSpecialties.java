@@ -1,10 +1,10 @@
-package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects;
+package com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.valueobjects;
 
 /**
  * Enum representing the specialties that a lawyer can have.
  * Each value corresponds to a specific area of legal expertise.
  */
-public enum LawyerSpecialty {
+public enum LawyerSpecialties {
     /** Specializes in criminal law cases. */
     CRIMINAL_LAW,
     /** Specializes in family law matters such as divorce and custody. */
@@ -28,5 +28,7 @@ public enum LawyerSpecialty {
     /** Specializes in bankruptcy law and insolvency cases. */
     BANKRUPTCY_LAW,
     /** Specializes in international law and cross-border legal issues. */
-    INTERNATIONAL_LAW
+    INTERNATIONAL_LAW,
+    /** Specializes in civil law matters, including contracts and torts. */
+    CIVIL_LAW,
 }
