@@ -1,5 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands;
 
+import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects.LawyerSpecialty;
+
 /**
  * Command representing a lawyer sign-up request.
  * Contains the lawyer's personal, professional, and authentication information required for registration.
@@ -13,7 +15,7 @@ package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands;
  * @param username    the username for the lawyer's account
  * @param password    the password for the lawyer's account (must be at least 25 characters)
  */
-public record SignUpLawyerCommand(String name, String lastname, String specialty,
+public record SignUpLawyerCommand(String name, String lastname, LawyerSpecialty specialty,
                                   String description, String phone, String dni, String username, String password) {
 
     /**
@@ -28,9 +30,6 @@ public record SignUpLawyerCommand(String name, String lastname, String specialty
         }
         if (lastname == null || lastname.isBlank()) {
             throw new IllegalArgumentException("Lastname cannot be null or blank");
-        }
-        if (specialty == null || specialty.isBlank()) {
-            throw new IllegalArgumentException("Specialty cannot be null or blank");
         }
         if (description == null || description.isBlank()) {
             throw new IllegalArgumentException("Description cannot be null or blank");
