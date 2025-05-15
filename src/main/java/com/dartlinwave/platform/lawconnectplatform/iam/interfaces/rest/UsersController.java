@@ -1,4 +1,4 @@
-package com.dartlinwave.platform.lawconnectplatform.iam.interfaces.rest.transform;
+package com.dartlinwave.platform.lawconnectplatform.iam.interfaces.rest;
 
 import org.springframework.http.MediaType;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.services.UserQueryService;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.queries.GetUserByIdQuery;
 import com.dartlinwave.platform.lawconnectplatform.iam.interfaces.rest.resources.UserResource;
-
+import com.dartlinwave.platform.lawconnectplatform.iam.interfaces.rest.transform.UserResourceFromEntityAssembler;
 /**
  * REST controller for managing users in the system.
  * <p>
