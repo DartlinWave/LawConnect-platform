@@ -37,5 +37,5 @@ public interface LawyerRepository extends JpaRepository<Lawyer, Long> {
      * @param userId the user ID to check
      * @return {@code true} if a lawyer with the given user ID exists, {@code false} otherwise
      */
-    boolean existsLawyerByUserId(Long userId);
+    boolean existsByUserId(Long userId);
 }

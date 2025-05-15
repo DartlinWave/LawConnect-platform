@@ -1,5 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.commands;
 
+import java.util.Set;
+
 /**
  * Command representing the creation of a Lawyer profile.
  * <p>
@@ -11,13 +13,15 @@ package com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.comman
  * @param dni         the national identification number of the lawyer (must be 8 characters)
  * @param phone       the phone number of the lawyer (must be 9 characters)
  * @param description a brief description of the lawyer's background or expertise
+ * @param specialties a set of specialties that the lawyer is associated with
  */
 public record CreateLawyerCommand(
         String name,
         String lastname,
         String dni,
         String phone,
-        String description
+        String description,
+        Set<String> specialties
 ) {
     /**
      * Validates the fields of the create lawyer command.
@@ -40,6 +44,9 @@ public record CreateLawyerCommand(
         }
         if (description == null || description.isBlank()) {
             throw new IllegalArgumentException("Description cannot be null or blank");
+        }
+        if (specialties == null || specialties.isEmpty()) {
+            throw new IllegalArgumentException("At least one specialty must be provided");
         }
     }
 }
