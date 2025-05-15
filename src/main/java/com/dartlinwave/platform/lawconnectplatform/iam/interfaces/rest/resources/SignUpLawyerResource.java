@@ -1,19 +1,25 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.interfaces.rest.resources;
 
-import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.valueobjects.LawyerSpecialty;
-
 /**
- * Resource representing the information required for a lawyer to sign up.
+ * Resource representing the data required for a lawyer registration request.
  *
- * @param name        the first name of the lawyer
- * @param lastname    the last name of the lawyer
- * @param specialty   the specialty of the lawyer
- * @param description a brief description of the lawyer's background or expertise
- * @param phone       the phone number of the lawyer
- * @param dni         the national identification number of the lawyer
- * @param username    the username chosen by the lawyer
- * @param password    the password chosen by the lawyer
+ * @param name         the lawyer's first name
+ * @param lastname     the lawyer's last name
+ * @param specialtyId  the unique identifier of the lawyer's specialty
+ * @param description  a brief description of the lawyer's background or expertise
+ * @param phone        the lawyer's phone number
+ * @param dni          the lawyer's national identification number
+ * @param username     the username chosen by the lawyer
+ * @param password     the password chosen by the lawyer
  */
-public record SignUpLawyerResource(String name, String lastname, LawyerSpecialty specialty,
-                                   String description, String phone, String dni, String username, String password) {
+public record SignUpLawyerResource(
+        String name,
+        String lastname,
+        Long specialtyId,
+        String description,
+        String phone,
+        String dni,
+        String username,
+        String password
+) {
 }

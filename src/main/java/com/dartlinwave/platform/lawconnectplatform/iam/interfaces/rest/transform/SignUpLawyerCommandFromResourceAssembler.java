@@ -19,7 +19,7 @@ public class SignUpLawyerCommandFromResourceAssembler {
         return new SignUpLawyerCommand(
                 resource.name(),
                 resource.lastname(),
-                resource.specialty(),
+                resource.specialtyId(),
                 resource.description(),
                 resource.phone(),
                 resource.dni(),
