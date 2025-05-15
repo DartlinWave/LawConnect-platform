@@ -10,5 +10,5 @@ import java.util.Set;
  * @param token the authentication token issued to the user
  * @param roles the set of roles assigned to the user
  */
-public record AuthenticationUserResource(Long id, String email, String token, Set<String> roles) {
+public record AuthenticatedUserResource(Long id, String email, String token, Set<String> roles) {
 }
