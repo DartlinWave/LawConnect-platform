@@ -1,17 +1,20 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.domain.services;
 
+import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.aggregates.User;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.queries.GetUserByIdQuery;
 
+import java.util.Optional;
+
 /**
- * Service interface for handling user-related queries.
- * Provides operations to retrieve user information from the system.
+ * Defines operations for querying user information.
  */
 public interface UserQueryService {
 
     /**
-     * Handles the retrieval of a user by their unique identifier.
+     * Retrieves a user by their unique identifier.
      *
-     * @param query the query containing the user ID to search for
+     * @param query the query containing the user ID
+     * @return an {@link Optional} containing the found {@link User}, or empty if not found
      */
-    void handle(GetUserByIdQuery query);
+    Optional<User> handle(GetUserByIdQuery query);
 }

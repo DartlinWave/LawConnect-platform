@@ -1,33 +1,40 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.domain.services;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.aggregates.User;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands.SignInCommand;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands.SignUpClientCommand;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands.SignUpLawyerCommand;
 
+import java.util.Optional;
+
 /**
- * Service interface for handling user-related commands.
- * Provides operations for user sign-in and sign-up processes.
+ * Defines operations for handling user authentication and registration commands.
  */
 public interface UserCommandService {
 
     /**
-     * Handles the user sign-in process based on the provided command.
+     * Authenticates a user based on the provided sign-in command.
      *
-     * @param command the command containing sign-in credentials
+     * @param command the sign-in command containing user credentials
+     * @return an {@link Optional} with a pair of the authenticated {@link User} and a token,
+     * or empty if authentication fails
      */
-    void handle(SignInCommand command);
+    Optional<ImmutablePair<User, String>> handle(SignInCommand command);
 
     /**
-     * Handles the sign-up process for a lawyer based on the provided command.
+     * Registers a new lawyer using the provided sign-up command.
      *
-     * @param command the command containing lawyer registration details
+     * @param command the sign-up command with lawyer registration details
+     * @return an {@link Optional} containing the created {@link User}, or empty if registration fails
      */
-    void handle(SignUpLawyerCommand command);
+    Optional<User> handle(SignUpLawyerCommand command);
 
     /**
-     * Handles the sign-up process for a client based on the provided command.
+     * Registers a new client using the provided sign-up command.
      *
-     * @param command the command containing client registration details
+     * @param command the sign-up command with client registration details
+     * @return an {@link Optional} containing the created {@link User}, or empty if registration fails
      */
-    void handle(SignUpClientCommand command);
+    Optional<User> handle(SignUpClientCommand command);
 }
