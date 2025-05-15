@@ -9,6 +9,9 @@ import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.queries
 import com.dartlinwave.platform.lawconnectplatform.profiles.interfaces.rest.transform.ClientResourceFromEntityAssembler;
 import com.dartlinwave.platform.lawconnectplatform.profiles.interfaces.rest.transform.LawyerResourceFromEntityAssembler;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
@@ -49,6 +52,13 @@ public class ProfilesController {
      * @param userId the unique identifier of the user
      * @return a {@link ResponseEntity} containing the {@link ClientResource} if found, or 404 if not found
      */
+    @Operation(summary = "Retrieve client profile by user ID",
+            description = "Returns the client profile associated with the specified user ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Client profile found"),
+            @ApiResponse(responseCode = "404", description = "Client profile not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid user ID supplied")
+    })
     @GetMapping(value = "/client/{userId}")
     public ResponseEntity<ClientResource> getClient(@PathVariable Long userId) {
         var getClientByUserIdQuery = new GetClientByUserIdQuery(userId);
@@ -69,6 +79,13 @@ public class ProfilesController {
      * @param userId the unique identifier of the user
      * @return a {@link ResponseEntity} containing the {@link LawyerResource} if found, or 404 if not found
      */
+    @Operation(summary = "Retrieve lawyer profile by user ID",
+            description = "Returns the lawyer profile associated with the specified user ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lawyer profile found"),
+            @ApiResponse(responseCode = "404", description = "Lawyer profile not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid user ID supplied")
+    })
     @GetMapping(value = "/lawyer/{userId}")
     public ResponseEntity<LawyerResource> getLawyer(@PathVariable Long userId) {
         var getLawyerByUserIdQuery = new GetLawyerByUserIdQuery(userId);
