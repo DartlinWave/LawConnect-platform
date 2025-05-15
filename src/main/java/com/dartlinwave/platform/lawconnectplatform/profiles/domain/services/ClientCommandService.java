@@ -17,7 +17,8 @@ public interface ClientCommandService {
      * Handles the creation of a new client profile based on the provided command.
      *
      * @param command the command containing the client's registration data
+     * @param userId the unique identifier of the user creating the client profile
      * @return an {@link Optional} containing the created {@link Client} if successful, or empty if creation failed
      */
-    Optional<Client> handle(CreateClientCommand command);
+    Optional<Client> handle(CreateClientCommand command, Long userId);
 }
