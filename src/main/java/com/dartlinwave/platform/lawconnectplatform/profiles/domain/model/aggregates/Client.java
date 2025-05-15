@@ -102,4 +102,13 @@ public class Client extends AuditableAbstractAggregateRoot<Client> {
         );
         this.userId = userId;
     }
+
+    /**
+     * Returns the client's full name by delegating to the {@link PersonName} value object.
+     *
+     * @return the full name of the client in the format "name lastname"
+     */
+    public String getFullName() {
+        return name.getFullName();
+    }
 }

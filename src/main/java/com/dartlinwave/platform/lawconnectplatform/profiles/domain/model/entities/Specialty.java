@@ -16,7 +16,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LawyerSpecialty {
+public class Specialty {
 
     /**
      * Unique identifier for the lawyer specialty.
@@ -37,7 +37,7 @@ public class LawyerSpecialty {
      *
      * @param name the lawyer's specialty
      */
-    public LawyerSpecialty(LawyerSpecialties name) {
+    public Specialty(LawyerSpecialties name) {
         this.name = name;
     }
 
@@ -55,8 +55,8 @@ public class LawyerSpecialty {
      *
      * @return the default LawyerSpecialty
      */
-    public static LawyerSpecialty getDefaultSpecialty() {
-        return new LawyerSpecialty(LawyerSpecialties.CIVIL_LAW);
+    public static Specialty getDefaultSpecialty() {
+        return new Specialty(LawyerSpecialties.CIVIL_LAW);
     }
 
     /**
@@ -66,8 +66,8 @@ public class LawyerSpecialty {
      * @return the corresponding LawyerSpecialty object
      * @throws IllegalArgumentException if the name does not match any enum constant
      */
-    public static LawyerSpecialty toLawyerSpecialtyFromName(String name) {
-        return new LawyerSpecialty(LawyerSpecialties.valueOf(name));
+    public static Specialty toLawyerSpecialtyFromName(String name) {
+        return new Specialty(LawyerSpecialties.valueOf(name));
     }
 
     /**
@@ -76,9 +76,9 @@ public class LawyerSpecialty {
      * @param specialties the set of specialties to validate
      * @return the original set if not empty, otherwise a set with the default specialty
      */
-    public static Set<LawyerSpecialty> validateLawyerSpecialtySet(Set<LawyerSpecialty> specialties) {
+    public static Set<Specialty> validateLawyerSpecialtySet(Set<Specialty> specialties) {
         if (specialties == null || specialties.isEmpty())
-            return Set.of(LawyerSpecialty.getDefaultSpecialty());
+            return Set.of(Specialty.getDefaultSpecialty());
 
         return specialties;
     }

@@ -1,7 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.profiles.application.internal.commandservices;
 
 import org.springframework.stereotype.Service;
-import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.entities.LawyerSpecialty;
+import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.entities.Specialty;
 import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.valueobjects.LawyerSpecialties;
 import com.dartlinwave.platform.lawconnectplatform.profiles.domain.services.LawyerSpecialtyCommandService;
 import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.commands.SeedLawyerSpecialtiesCommand;
@@ -39,7 +39,7 @@ public class LawyerSpecialtyCommandServiceImpl implements LawyerSpecialtyCommand
     public void handle(SeedLawyerSpecialtiesCommand command) {
         Arrays.stream(LawyerSpecialties.values()).forEach(specialty -> {
             if (!lawyerSpecialtiesRepository.existsByName(specialty)) {
-                lawyerSpecialtiesRepository.save(new LawyerSpecialty(specialty));
+                lawyerSpecialtiesRepository.save(new Specialty(specialty));
             }
         });
     }

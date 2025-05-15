@@ -19,7 +19,7 @@ import java.time.Instant;
  * </p>
  */
 @Service
-public class ApplicationReadyEventHandler {
+public class IamApplicationReadyEventHandler {
 
     /** Indicates whether the seeding process has already been executed. */
     private boolean executed = false;
@@ -29,14 +29,14 @@ public class ApplicationReadyEventHandler {
 
     /** Logger for logging seeding events and errors. */
     private static final Logger LOGGER =
-            LoggerFactory.getLogger(ApplicationReadyEventHandler.class);
+            LoggerFactory.getLogger(IamApplicationReadyEventHandler.class);
 
     /**
      * Constructs a new {@code ApplicationReadyEventHandler} with the given {@link RoleCommandService}.
      *
      * @param roleCommandService the service used to handle role seeding commands
      */
-    public ApplicationReadyEventHandler(RoleCommandService roleCommandService) {
+    public IamApplicationReadyEventHandler(RoleCommandService roleCommandService) {
         this.roleCommandService = roleCommandService;
     }
 

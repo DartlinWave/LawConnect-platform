@@ -1,7 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.aggregates;
 
 import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.valueobjects.PersonName;
-import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.entities.LawyerSpecialty;
+import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.entities.Specialty;
 import com.dartlinwave.platform.lawconnectplatform.profiles.domain.model.commands.CreateLawyerCommand;
 import com.dartlinwave.platform.lawconnectplatform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 
@@ -54,15 +54,15 @@ public class Lawyer extends AuditableAbstractAggregateRoot<Lawyer> {
 
     /**
      * The set of specialties associated with the lawyer.
-     * Managed as a many-to-many relationship with the {@link LawyerSpecialty} entity.
+     * Managed as a many-to-many relationship with the {@link Specialty} entity.
      */
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-            name = "lawyer_specialties",
+            name = "lawyer_specialty",
             joinColumns = @JoinColumn(name = "lawyer_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id")
     )
-    private Set<LawyerSpecialty> specialties;
+    private Set<Specialty> specialties;
 
     /**
      * The lawyer's national identification number (DNI).
@@ -123,7 +123,7 @@ public class Lawyer extends AuditableAbstractAggregateRoot<Lawyer> {
      * @param specialties the set of specialties to assign to the lawyer
      * @param userId      the unique identifier for the user associated with this lawyer
      */
-    public Lawyer(CreateLawyerCommand command, Set<LawyerSpecialty> specialties, Long userId) {
+    public Lawyer(CreateLawyerCommand command, Set<Specialty> specialties, Long userId) {
         this(
                 command.name(),
                 command.lastname(),
@@ -142,8 +142,8 @@ public class Lawyer extends AuditableAbstractAggregateRoot<Lawyer> {
      *
      * @param specialties the set of specialties to add
      */
-    public void addSpecialities(Set<LawyerSpecialty> specialties) {
-        var validateSpecialitiesSet = LawyerSpecialty.validateLawyerSpecialtySet(specialties);
+    public void addSpecialities(Set<Specialty> specialties) {
+        var validateSpecialitiesSet = Specialty.validateLawyerSpecialtySet(specialties);
         this.specialties.addAll(validateSpecialitiesSet);
     }
 
