@@ -6,9 +6,9 @@ import java.util.Set;
  * Resource representing an authenticated user, including their ID, email, authentication token, and roles.
  *
  * @param id    the unique identifier of the user
- * @param email the email address of the user
+ * @param username the username of the user
  * @param token the authentication token issued to the user
  * @param roles the set of roles assigned to the user
  */
-public record AuthenticatedUserResource(Long id, String email, String token, Set<String> roles) {
+public record AuthenticatedUserResource(Long id, String username, String token, Set<String> roles) {
 }

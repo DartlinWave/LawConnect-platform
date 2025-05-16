@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface StatusRepository extends JpaRepository<Status, Long> {
-    boolean existsStatusByLegalCaseId(long legalCaseId);
-    List<Status> findStatusesByLegalCaseId(long legalCaseId);
+    boolean existsByLegalCaseId(long legalCaseId);
+    List<Status> findByLegalCaseId(long legalCaseId);
 }

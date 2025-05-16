@@ -16,6 +16,6 @@ public class StatusQueryServiceImpl implements StatusQueryService {
     }
     @Override
     public List<Status> handle(GetStatusByCaseIdQuery query) {
-        return statusRepository.findStatusesByLegalCaseId(query.legalCaseId());
+        return statusRepository.findByLegalCaseId(query.legalCaseId());
     }
 }

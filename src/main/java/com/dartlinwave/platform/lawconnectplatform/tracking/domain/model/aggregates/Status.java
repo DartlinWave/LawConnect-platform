@@ -2,15 +2,15 @@ package com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.aggreg
 
 import com.dartlinwave.platform.lawconnectplatform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.commands.CreateStatusCommand;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Status extends AuditableAbstractAggregateRoot <Status> {
     private long legalCaseId;
 
     public long getLegalCaseId() {
         return legalCaseId;
     }
-
-
 
     public Status(CreateStatusCommand command){
         this.legalCaseId = command.legalCaseId();

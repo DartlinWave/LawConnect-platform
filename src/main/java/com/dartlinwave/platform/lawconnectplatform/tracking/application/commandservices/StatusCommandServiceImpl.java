@@ -4,7 +4,6 @@ import com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.aggrega
 import com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.commands.CreateStatusCommand;
 import com.dartlinwave.platform.lawconnectplatform.tracking.domain.model.exceptions.LegalCaseAlreadyHaveStatusException;
 import com.dartlinwave.platform.lawconnectplatform.tracking.domain.services.StatusCommandService;
-import com.dartlinwave.platform.lawconnectplatform.tracking.domain.services.StatusTypeCommandService;
 import com.dartlinwave.platform.lawconnectplatform.tracking.infrastructure.persistence.jpa.repositories.StatusRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class StatusCommandServiceImpl implements StatusCommandService {
 
     @Override
     public void handle(CreateStatusCommand command) {
-        var isStatusWithSameLegalCaseId = statusRepository.existsStatusByLegalCaseId(command.legalCaseId());
+        var isStatusWithSameLegalCaseId = statusRepository.existsByLegalCaseId(command.legalCaseId());
         if (isStatusWithSameLegalCaseId) {
             throw new LegalCaseAlreadyHaveStatusException(
                     "Legal case with id: " + command.legalCaseId() + " already have status");
