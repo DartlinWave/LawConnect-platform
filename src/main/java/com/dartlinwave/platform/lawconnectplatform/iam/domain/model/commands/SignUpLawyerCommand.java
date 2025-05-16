@@ -1,5 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands;
 
+import java.util.Set;
+
 /**
  * Command representing a lawyer sign-up request.
  * <p>
@@ -8,7 +10,7 @@ package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands;
  *
  * @param name        the first name of the lawyer
  * @param lastname    the last name of the lawyer
- * @param specialtyId the unique identifier of the lawyer's specialty
+ * @param specialties a set of specialties that the lawyer is associated with
  * @param description a brief description of the lawyer's background or expertise
  * @param phone       the phone number of the lawyer (must be 9 digits)
  * @param dni         the national identification number of the lawyer (must be 8 digits)
@@ -18,7 +20,7 @@ package com.dartlinwave.platform.lawconnectplatform.iam.domain.model.commands;
 public record SignUpLawyerCommand(
         String name,
         String lastname,
-        Long specialtyId,
+        Set<String> specialties,
         String description,
         String phone,
         String dni,
@@ -33,9 +35,7 @@ public record SignUpLawyerCommand(
      * @throws IllegalArgumentException if any field is invalid
      */
     public SignUpLawyerCommand {
-        if (specialtyId == null)
-            throw new IllegalArgumentException("Specialty ID cannot be null");
-       if (name == null || name.isBlank())
+        if (name == null || name.isBlank())
             throw new IllegalArgumentException("Name cannot be null or blank");
         if (lastname == null || lastname.isBlank())
             throw new IllegalArgumentException("Lastname cannot be null or blank");
@@ -43,6 +43,8 @@ public record SignUpLawyerCommand(
             throw new IllegalArgumentException("Username cannot be null or blank");
         if (password == null || password.isBlank())
             throw new IllegalArgumentException("Password cannot be null or blank");
+        if (specialties == null || specialties.isEmpty())
+            throw new IllegalArgumentException("Specialties cannot be null or empty");
         if (description == null || description.isBlank())
             throw new IllegalArgumentException("Description cannot be null or blank");
         if (dni == null || dni.isBlank() || dni.length() != 8 || !dni.matches("\\d+"))

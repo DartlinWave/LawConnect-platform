@@ -24,7 +24,8 @@ public class LawyerResourceFromEntityAssembler {
                 lawyer.getFullName(),
                 lawyer.getDni(),
                 lawyer.getPhone(),
-                lawyer.getDescription()
+                lawyer.getDescription(),
+                lawyer.getSerializedSpecialties()
         );
     }
 }

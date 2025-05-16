@@ -1,5 +1,6 @@
 package com.dartlinwave.platform.lawconnectplatform.iam.application.internal.commandservices;
 
+import com.dartlinwave.platform.lawconnectplatform.iam.application.internal.outboundservices.acl.ExternalProfileService;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.entities.Role;
 import com.dartlinwave.platform.lawconnectplatform.iam.domain.model.aggregates.User;
@@ -34,6 +35,7 @@ public class UserCommandServiceImpl implements UserCommandService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final HashingService hashingService;
+    private final ExternalProfileService externalProfileService;
 
     /**
      * Constructs a new {@code UserCommandServiceImpl} with the required dependencies.
@@ -47,12 +49,13 @@ public class UserCommandServiceImpl implements UserCommandService {
             TokenService tokenService,
             UserRepository userRepository,
             RoleRepository roleRepository,
-            HashingService hashingService) {
+            HashingService hashingService, ExternalProfileService externalProfileService) {
 
         this.tokenService = tokenService;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.hashingService = hashingService;
+        this.externalProfileService = externalProfileService;
     }
 
     /**
@@ -92,26 +95,37 @@ public class UserCommandServiceImpl implements UserCommandService {
      * @return an {@link Optional} containing the created {@link User}, or empty if registration fails
      * @throws RuntimeException if the username already exists or the lawyer role is not found
      */
-    @Override
-    @Transactional
-    public Optional<User> handle(SignUpLawyerCommand command) {
-        if (userRepository.existsByUsername(command.username()))
-            throw new RuntimeException("Username already exists");
+        @Override
+        @Transactional
+        public Optional<User> handle(SignUpLawyerCommand command) {
+            if (userRepository.existsByUsername(command.username()))
+                throw new RuntimeException("Username already exists");
 
-        Role lawyerRole = roleRepository.findByName(Roles.ROLE_LAWYER)
-                .orElseThrow(() -> new RuntimeException("Lawyer role not found"));
+            Role lawyerRole = roleRepository.findByName(Roles.ROLE_LAWYER)
+                    .orElseThrow(() -> new RuntimeException("Lawyer role not found"));
 
-        Set<Role> roles = Set.of(lawyerRole);
+            Set<Role> roles = Set.of(lawyerRole);
 
-        var hashedPassword = hashingService.encode(command.password());
+            var hashedPassword = hashingService.encode(command.password());
 
-        var user = new User(command.username(), hashedPassword, roles);
-        userRepository.save(user);
+            var user = new User(command.username(), hashedPassword, roles);
+            userRepository.save(user);
 
-        /*TODO: Create Lawyer Profile*/
+                Long lawyerId = externalProfileService.createLawyerProfile(
+                        command.name(),
+                        command.lastname(),
+                        command.dni(),
+                        command.phone(),
+                        command.description(),
+                        command.specialties(),
+                        user.getId()
+                );
 
-        return Optional.of(user);
-    }
+            if (lawyerId == 0L)
+                throw new RuntimeException("Failed to create lawyer profile");
+
+            return Optional.of(user);
+        }
 
     /**
      * Registers a new client using the provided sign-up command.
@@ -140,7 +154,16 @@ public class UserCommandServiceImpl implements UserCommandService {
         var user = new User(command.username(), hashedPassword, roles);
         userRepository.save(user);
 
-        /*TODO: Create Client Profile*/
+        Long clientId = externalProfileService.createClientProfile(
+                command.name(),
+                command.lastname(),
+                command.dni(),
+                command.phone(),
+                user.getId()
+        );
+
+        if (clientId == 0L)
+            throw new RuntimeException("Failed to create client profile");
 
         return Optional.of(user);
     }

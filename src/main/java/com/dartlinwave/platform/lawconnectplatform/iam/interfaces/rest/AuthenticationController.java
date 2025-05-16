@@ -80,7 +80,7 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "400", description = "Invalid input"),
     })
     @PostMapping("/sign-up/lawyer")
-    public ResponseEntity<UserResource> signUpLawyer(@RequestBody SignUpLawyerResource signUpLawyerResource) {
+    public ResponseEntity<UserResource> signUpLawyer(@RequestBody SignUpLawyerCommandResource signUpLawyerResource) {
         var signUpCommand = SignUpLawyerCommandFromResourceAssembler.toCommandFromResource(signUpLawyerResource);
         var user = userCommandService.handle(signUpCommand);
 

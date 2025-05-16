@@ -1,5 +1,7 @@
 package com.dartlinwave.platform.lawconnectplatform.profiles.interfaces.rest.resources;
 
+import java.util.Set;
+
 /**
  * Resource representation of a Lawyer for REST API responses.
  * <p>
@@ -19,6 +21,7 @@ public record LawyerResource(
         String fullName,
         String dni,
         String phone,
-        String description
+        String description,
+        Set<String> specialties
 ) {
 }
