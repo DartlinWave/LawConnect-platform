@@ -1,16 +1,11 @@
 package com.dartlinwave.platform.lawconnectplatform.cases.domain.model.commands;
 
-import lombok.Getter;
-
-import java.util.UUID;
-
-@Getter
-public class AcceptLawyerCommand {
-        private final Long caseId;
-        private final UUID lawyerId;
-
-        public AcceptLawyerCommand(Long caseId, UUID lawyerId) {
-                this.caseId = caseId;
-                this.lawyerId = lawyerId;
-        }
+/**
+ * Command to accept a lawyer's application to a case.
+ * Contains the identifiers for the case and the lawyer to be accepted.
+ *
+ * @param caseId   the unique identifier of the case
+ * @param lawyerId the unique identifier of the lawyer to accept
+ */
+public record AcceptLawyerCommand(Long caseId, Long lawyerId) {
 }

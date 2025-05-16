@@ -8,10 +8,10 @@ import java.util.UUID;
 @Getter
 public class CaseCreatedEvent {
     private final Long caseId;
-    private final UUID clientId;
+    private final Long clientId;
     private final Date occurredOn;
 
-    public CaseCreatedEvent(Long caseId, UUID clientId) {
+    public CaseCreatedEvent(Long caseId, Long clientId) {
         this.caseId = caseId;
         this.clientId = clientId;
         this.occurredOn = new Date();
